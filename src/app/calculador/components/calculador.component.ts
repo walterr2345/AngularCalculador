@@ -8,13 +8,19 @@ import { Observable } from 'rxjs';
   styleUrls: ['./calculador.component.scss']
 })
 export class CalculadorComponent {
-  public calc$: any
+  calc$: Observable<string>
+
+  /*
+    count$: Observable<number>;
+
+  constructor(private store: Store<{ count: number }>) {
+    this.count$ = store.select('count');
+  }
+  */
   constructor(
-    // public currvalue = '',
-    // public toShow = '0',
-    // private calc = Store<{ calc: string }>
+    private calc: Store<{ calc: string }>
   ) {
-    this.calc$
+    this.calc$ = calc.select('calc')
   }
 
   currvalue = ''
