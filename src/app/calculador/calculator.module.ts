@@ -4,21 +4,20 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CalculadorComponent } from './components/calculador.component'
 import { Router, RouterModule, Routes } from '@angular/router';
 
-// const routes: Routes[
-    
-// ]
-
-
-
-
+const routes: Routes = [
+    {
+        path:'',
+        component:CalculadorComponent
+    }
+]
 @NgModule({
     declarations: [
-        CalculadorComponent
+        // CalculadorComponent
     ],
     imports: [
-        // RouterModule.forChild(routes)
+        RouterModule.forChild(routes)
     ],
     providers: [],
 
 })
-export class AppModule { }
+export class CalcModule { }

@@ -7,16 +7,16 @@ import { Observable } from 'rxjs';
   templateUrl: './calculador.component.html',
   styleUrls: ['./calculador.component.scss']
 })
-export class CalculadorComponent implements OnInit {
-  calc$ = Observable<string>
+export class CalculadorComponent {
+  public calc$: any
   constructor(
+    // public currvalue = '',
+    // public toShow = '0',
     // private calc = Store<{ calc: string }>
-  ) { 
-    // this.calc$= calc.s
+  ) {
+    this.calc$
   }
 
-  ngOnInit(): void {
-  }
   currvalue = ''
   toShow = '0'
 
