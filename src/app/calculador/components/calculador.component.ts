@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { press, back, clear, equals } from '../reduces/calculator.actions';
 
 @Component({
   selector: 'app-calculador',
@@ -10,13 +11,6 @@ import { Observable } from 'rxjs';
 export class CalculadorComponent {
   calc$: Observable<string>
 
-  /*
-    count$: Observable<number>;
-
-  constructor(private store: Store<{ count: number }>) {
-    this.count$ = store.select('count');
-  }
-  */
   constructor(
     private calc: Store<{ calc: string }>
   ) {
@@ -28,6 +22,8 @@ export class CalculadorComponent {
 
 
   press(value: string) {
+    this.calc.dispatch(press())
+
     this.currvalue = this.currvalue + value
     this.toShow = this.currvalue
   }
@@ -38,15 +34,19 @@ export class CalculadorComponent {
   }
 
   clear() {
+    this.calc.dispatch(clear())
+
     this.currvalue = ''
     this.toShow = '0'
   }
 
   back() {
+
     this.currvalue = this.currvalue.slice(0, -1)
     this.toShow = this.currvalue
     if (this.toShow === '') {
       this.toShow = '0'
     }
   }
+
 }

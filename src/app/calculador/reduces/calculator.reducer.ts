@@ -4,22 +4,38 @@ import { back, clear, equals, press } from './calculator.actions'
 export let toShow = '0'
 export let currvalue = ''
 
+export interface calculadorState {
+    toShow: string,
+    currentValue: string
+}
+
+export const initialState: calculadorState = {
+    toShow: '0',
+    currentValue: ' '
+}
+
 export const calcReducer = createReducer(
-    toShow,
-    // currvalue,
-    on(press, (value) =>
-        currvalue + value,
-        //  toShow = currvalue
-    ),
-    on(equals, (value) => toShow = eval(currvalue)),
+    initialState,
+    on(press, (state,) => ({
+        ...state,
+    }))
+)
 
-    on(back, () => currvalue),
+// export const calcReducer = createReducer(
+//     initialState,
+//     on(press, (value) =>
+//         currvalue + value,
+//         //  toShow = currvalue
+//     ),
+//     on(equals, () => toShow = eval(currvalue)),
 
-    on(clear, () => '0')
-);
+//     on(back, () => currvalue),
+
+//     on(clear, () => toShow = '0')
+// );
 
 
-  /*export interface CalculatorState {
+/*export interface CalculatorState {
 displayValue: string;
 operator: string;
 leftOperand: number;
@@ -34,26 +50,26 @@ rightOperand: null,
 const calculatorReducer = createReducer(
 initialState,
 on(setDisplayValue, (state, { value }) => ({
-  ...state,
-  displayValue: value,
+...state,
+displayValue: value,
 })),
 on(setOperator, (state, { operator }) => ({
-  ...state,
-  operator,
-  leftOperand: parseFloat(state.displayValue),
-  displayValue: '0',
+...state,
+operator,
+leftOperand: parseFloat(state.displayValue),
+displayValue: '0',
 })),
 on(calculateResult, (state) => ({
-  ...state,
-  rightOperand: parseFloat(state.displayValue),
-  displayValue: doCalculation(
-    state.leftOperand,
-    state.rightOperand,
-    state.operator
-  ),
-  leftOperand: null,
-  rightOperand: null,
-  operator: null,
+...state,
+rightOperand: parseFloat(state.displayValue),
+displayValue: doCalculation(
+  state.leftOperand,
+  state.rightOperand,
+  state.operator
+),
+leftOperand: null,
+rightOperand: null,
+operator: null,
 }))
 );
 export function reducer(state: CalculatorState | undefined, action: Action) {
@@ -65,15 +81,15 @@ rightOperand: number,
 operator: string
 ) {
 switch (operator) {
-  case '+':
-    return (leftOperand + rightOperand).toString();
-  case '-':
-    return (leftOperand - rightOperand).toString();
-  case '*':
-    return (leftOperand * rightOperand).toString();
-  case '/':
-    return (leftOperand / rightOperand).toString();
-  default:
-    return '0';
+case '+':
+  return (leftOperand + rightOperand).toString();
+case '-':
+  return (leftOperand - rightOperand).toString();
+case '*':
+  return (leftOperand * rightOperand).toString();
+case '/':
+  return (leftOperand / rightOperand).toString();
+default:
+  return '0';
 }
 } */
