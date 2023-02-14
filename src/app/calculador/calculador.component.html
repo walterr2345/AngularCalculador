@@ -1,0 +1,33 @@
+<div class="body">
+    <div class="myCalc">
+      <input [(ngModel)]="toShow" class="scream" type="text">
+      <div class="allBtn">
+        <div class="btnNumber">
+          <button (click)="press('1')" class="btnNumber__number">1</button>
+          <button (click)="press('2')" class="btnNumber__number">2</button>
+          <button (click)="press('3')" class="btnNumber__number">3</button>
+          <button (click)="press('4')" class="btnNumber__number">4</button>
+          <button (click)="press('5')" class="btnNumber__number">5</button>
+          <button (click)="press('6')" class="btnNumber__number">6</button>
+          <button (click)="press('7')" class="btnNumber__number">7</button>
+          <button (click)="press('8')" class="btnNumber__number">8</button>
+          <button (click)="press('9')" class="btnNumber__number">9</button>
+          <button (click)="press('0')" class="btnNumber__number">0</button>
+          <div class="btnNumber__extraBtn">
+            <button (click)="press('.')" class="btnNumber__number">.</button>
+            <button (click)="back()" class="btnNumber__number"><=</button>
+          </div>
+        </div>
+        <div class="btnOperations">
+          <button (click)="press('+')" class="btnOperations__signs">+</button>
+          <button (click)="press('-')" class="btnOperations__signs">-</button>
+          <button (click)="press('*')" class="btnOperations__signs">*</button>
+          <button (click)="press('/')" class="btnOperations__signs">/</button>
+        </div>
+      </div>
+      <div class="btnResult">
+        <button (click)="clear()" class="btnResult__btn btnResult__clear">C</button>
+        <button (click)="equals()" class="btnResult__btn btnResult__equals">=</button>
+      </div>
+    </div>
+  </div>
