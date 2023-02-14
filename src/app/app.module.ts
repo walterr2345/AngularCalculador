@@ -4,17 +4,19 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CalculadorComponent } from './calculador/calculador.component';
+import { StoreModule } from '@ngrx/store';
+import { calcReducer } from './calculador/reduces/calculator.reducer';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CalculadorComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    StoreModule.forRoot({ calc: calcReducer })
   ],
   providers: [],
   bootstrap: [AppComponent]

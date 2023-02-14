@@ -1,4 +1,4 @@
-.body{
+.body {
     display: flex;
     height: 750px;
     justify-content: center;
@@ -16,16 +16,17 @@
     background-color: #c3dff9;
 }
 
-.scream{
+.scream {
     align-items: flex-end;
     width: 90%;
-    margin-top: 10px ;
+    margin-top: 10px;
     cursor: pointer;
     font-size: 20px;
     padding: 10px;
     border-radius: 15px;
     border: 1px solid gray;
-    &:focus{
+
+    &:focus {
         outline: none;
         border: 1px solid grey;
     }
@@ -39,6 +40,7 @@
     display: flex;
     width: 210px;
     flex-wrap: wrap;
+
     &__number {
         background-color: #5086c1;
         border-radius: 50%;
@@ -51,11 +53,13 @@
         display: flex;
         justify-content: center;
         align-items: center;
+
         &:hover {
             cursor: pointer;
             box-shadow: 0px 0px 10px 2px #636363;
         }
     }
+
     &__extraBtn {
         display: flex;
     }
@@ -64,6 +68,7 @@
 .btnOperations {
     display: flex;
     flex-direction: column;
+
     &__signs {
         background-color: #043b77;
         border-radius: 50%;
@@ -76,9 +81,10 @@
         display: flex;
         justify-content: center;
         align-items: center;
+
         &:hover {
             cursor: pointer;
-            box-shadow: 0px 0px 20px 5px rgb(152, 255, 216);
+            box-shadow: 0px 0px 10px 2px #636363;
         }
     }
 }
@@ -87,24 +93,28 @@
     display: flex;
     justify-content: space-evenly;
     width: 100%;
-    &__btn{
+
+    &__btn {
         width: 120px;
         font-size: 30px;
         padding: 5px;
         margin: 10px 5px;
         border-radius: 10px;
         border: none;
-        &:hover{
+
+        &:hover {
             background-color: white;
             cursor: pointer;
             color: #000;
         }
     }
-    &__clear{
+
+    &__clear {
         background-color: #84b6f4;
         color: white;
     }
-    &__equals{
+
+    &__equals {
         background-color: #84b6f4;
         color: white;
     }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-calculador',
@@ -6,8 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./calculador.component.scss']
 })
 export class CalculadorComponent implements OnInit {
-
-  constructor() { }
+  calc$ = Observable<string>
+  constructor(
+    // private calc = Store<{ calc: string }>
+  ) { 
+    // this.calc$= calc.s
+  }
 
   ngOnInit(): void {
   }
