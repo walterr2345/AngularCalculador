@@ -1,22 +1,53 @@
-import { State, createReducer, on } from '@ngrx/store'
+import { Action, State, createReducer, on } from '@ngrx/store'
 import { back, clear, equals, press } from './calculator.actions'
 
+
 export interface calculadorState {
-    toShow: string,
-    currentValue: string
+  toShow: string,
+  currentValue: string
 }
 
 export const initialState: calculadorState = {
-    toShow: '0',
-    currentValue: ' '
+  toShow: '0',
+  currentValue: ' '
 }
 
+
 export const calculatorReducer = createReducer(
-    initialState,
-    on(press, (state,) => ({
-        ...state,
-    }))
-)
+
+  initialState,
+  // on(ScoreboardPageActions.setScores, (state, { game }) => ({ home: game.home, away: game.away }))
+  on(press, (state, { value }) => ({ ...state, currentValue: state.currentValue + value, toShow: state.currentValue })),
+
+  // this.currvalue = this.currvalue + value
+  // this.toShow = this.currvalue
+
+  on(equals, (state, action) => state + eval(initialState.currentValue)),
+
+  on(clear, () => ({ toShow: '0', currentValue: '' }))
+);
+
+
+
+export function SimpleReducer(state: string = '0', action: Action) {
+  console.log(action.type, state);
+  switch (action.type) {
+    case 'SUMA':
+      return state = ' OPERACION SUMA'
+    case 'RESTA':
+      return state = ' OPERACION RESTA'
+    case 'MULTIPLICACION':
+      return state = ' OPERACION MULTIPLICACION'
+    case 'DIVISION':
+      return state = ' OPERACION DIVISION'
+    case 'ESPAÑOL':
+      return state = ' Hi ESPAÑOL'
+    case 'FRANCES':
+      return state = ' Hi FRANCES'
+    default:
+      return state;
+  }
+}
 
 // export const calcReducer = createReducer(
 //     initialState,
@@ -30,7 +61,6 @@ export const calculatorReducer = createReducer(
 
 //     on(clear, () => toShow = '0')
 // );
-
 
 /*export interface CalculatorState {
 displayValue: string;
