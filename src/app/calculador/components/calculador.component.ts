@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { press, back, clear, equals } from '../reduces/calculator.actions';
+import { back, clear, equals, press } from '../reduces/calculator.actions';
+import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-calculador',
@@ -10,41 +11,40 @@ import { press, back, clear, equals } from '../reduces/calculator.actions';
 })
 export class CalculadorComponent {
   currvalue = ''
-  toShow = '0'
-  // currvalue$: Observable<string>;
-  // toShow$: Observable<string>;
+  toShow: any
+  toShow$: any
+  currvalue$: Observable<string>;
+  toShow2: any
+
   constructor(
-    private calc: Store<{ currvalue: string }>
+    private calc: Store<any>
   ) {
-    // this.currvalue$ = Store.pipe(select(state => state.calculator.currvalue));
-    // this.toShow$ = Store.pipe(select(state => state.calculator.toShow));
-
+    this.currvalue$ = calc.select('calculator');
+    this.currvalue$.subscribe((pop) => {
+      console.log(pop);
+    })
+    // console.log(this.currvalue$);
   }
-
-
-
-
   press(value: string) {
 
     this.calc.dispatch(press({ value: value }))
+    // this.toShow = this.currvalue$
+    // this.toShow = JSON.stringify(this.currvalue$)
 
-    // this.currvalue = this.currvalue + value
-    // this.toShow = this.currvalue
   }
 
   equals() {
+    this.calc.dispatch(equals())
+    // this.toShow2 = this.calc.dispatch(equals())
+    // console.log(this.toShow2);
 
-      this.calc.dispatch(equals())
-
-    // this.toShow = eval(this.currvalue)
-    // this.currvalue = this.toShow
   }
 
   clear() {
-    // this.calc.dispatch(clear())
+    this.calc.dispatch(clear())
 
-    this.currvalue = ''
-    this.toShow = '0'
+    // this.currvalue = ''
+    // this.toShow = '0'
   }
 
   back() {
