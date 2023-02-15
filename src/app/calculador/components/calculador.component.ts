@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { press, back, clear, equals } from '../reduces/calculator.actions';
 
@@ -9,23 +9,27 @@ import { press, back, clear, equals } from '../reduces/calculator.actions';
   styleUrls: ['./calculador.component.scss']
 })
 export class CalculadorComponent {
-  calc$: Observable<string>
-
-  constructor(
-    private calc: Store<{ calc: string }>
-  ) {
-    this.calc$ = calc.select('calc')
-  }
-
   currvalue = ''
   toShow = '0'
+  // currvalue$: Observable<string>;
+  // toShow$: Observable<string>;
+  constructor(
+    private calc: Store<{ currvalue: string }>
+  ) {
+    // this.currvalue$ = Store.pipe(select(state => state.calculator.currvalue));
+    // this.toShow$ = Store.pipe(select(state => state.calculator.toShow));
+
+   }
+
+
 
 
   press(value: string) {
     this.calc.dispatch(press())
+    // this.store.dispatch(new press(value));
 
-    this.currvalue = this.currvalue + value
-    this.toShow = this.currvalue
+    // this.currvalue = this.currvalue + value
+    // this.toShow = this.currvalue
   }
 
   equals() {
@@ -36,8 +40,8 @@ export class CalculadorComponent {
   clear() {
     this.calc.dispatch(clear())
 
-    this.currvalue = ''
-    this.toShow = '0'
+    // this.currvalue = ''
+    // this.toShow = '0'
   }
 
   back() {

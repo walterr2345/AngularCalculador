@@ -1,9 +1,6 @@
 import { State, createReducer, on } from '@ngrx/store'
 import { back, clear, equals, press } from './calculator.actions'
 
-export let toShow = '0'
-export let currvalue = ''
-
 export interface calculadorState {
     toShow: string,
     currentValue: string
@@ -14,7 +11,7 @@ export const initialState: calculadorState = {
     currentValue: ' '
 }
 
-export const calcReducer = createReducer(
+export const calculatorReducer = createReducer(
     initialState,
     on(press, (state,) => ({
         ...state,
